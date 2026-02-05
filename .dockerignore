@@ -1,0 +1,9 @@
+.git
+.gitignore
+*.ps1
+README.md
+**/.DS_Store
+.vscode
+SiteBluEduca_GitHub
+node_modules
+.env
