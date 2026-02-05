@@ -60,14 +60,16 @@ function getCfg($key, $config, $default = null)
 // Sanitização Rigorosa
 $nome = htmlspecialchars(strip_tags(trim($data['nome'] ?? '')), ENT_QUOTES, 'UTF-8');
 $phone = htmlspecialchars(strip_tags(trim($data['phone'] ?? '')), ENT_QUOTES, 'UTF-8');
+$email = filter_var(trim($data['email'] ?? ''), FILTER_SANITIZE_EMAIL);
+$school = htmlspecialchars(strip_tags(trim($data['school'] ?? '')), ENT_QUOTES, 'UTF-8');
 $desafio = htmlspecialchars(strip_tags(trim($data['q1'] ?? 'Não informado')), ENT_QUOTES, 'UTF-8');
 $tamanho_escola = htmlspecialchars(strip_tags(trim($data['q2'] ?? 'Não informado')), ENT_QUOTES, 'UTF-8');
 
 // Validação de e-mail (O admin receberá o lead)
 // $to_email = 'contato@bluedigitalhub.com.br'; // Ajuste aqui o e-mail que receberá os leads - REMOVIDO
 
-if (empty($nome) || empty($phone)) {
-    echo json_encode(['success' => false, 'message' => 'Por favor, preencha nome e telefone.']);
+if (empty($nome) || empty($phone) || empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL) || empty($school)) {
+    echo json_encode(['success' => false, 'message' => 'Por favor, preencha todos os campos corretamente.']);
     exit;
 }
 
@@ -93,34 +95,34 @@ try {
 
     $mail->setFrom($from_email, $from_name);
     $mail->addAddress($leads_to);
-    $mail->addReplyTo($from_email, 'Suporte BluEduca');
+    $mail->addReplyTo($email, $nome); // Reply-to vai para o lead
 
     // Conteúdo do E-mail (Template Premium)
     $mail->isHTML(true);
-    $mail->Subject = "🚀 [LEAD] Diagnóstico Escolar: $nome";
+    $mail->Subject = "🚀 [LEAD] $school ($nome)";
 
     // Template com CSS Inline para Extrema Compatibilidade
     $mailContent = "
     <!DOCTYPE html>
     <html lang='pt-br'>
     <head>
-        <meta charset='UTF-8'>
-        <style>
-            body { margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f3f4f6; }
-            .wrapper { width: 100%; background-color: #f3f4f6; padding: 40px 0; }
-            .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 24px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.05); }
-            .header { background: linear-gradient(135deg, #0c46e6 0%, #00d2ff 100%); padding: 50px 40px; text-align: center; }
-            .header img { height: 45px; }
-            .body { padding: 40px; color: #1f2937; }
-            .headline { font-size: 24px; font-weight: 800; color: #111827; margin-bottom: 8px; }
-            .subheadline { font-size: 16px; color: #6b7280; margin-bottom: 32px; }
-            .bento-card { background-color: #f9fafb; border: 1px solid #e5e7eb; border-radius: 20px; padding: 24px; margin-bottom: 16px; }
-            .label { font-size: 10px; font-weight: 800; color: #0c46e6; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
-            .value { font-size: 18px; font-weight: 700; color: #111827; }
-            .footer { background-color: #f9fafb; padding: 32px; text-align: center; border-top: 1px solid #f3f4f6; }
-            .footer p { font-size: 12px; color: #9ca3af; margin: 0; }
-            .cta-button { display: inline-block; background-color: #0c46e6; color: #ffffff !important; padding: 18px 36px; border-radius: 100px; font-weight: 700; text-decoration: none; margin-top: 24px; box-shadow: 0 10px 20px rgba(12, 70, 230, 0.2); }
-        </style>
+    <meta charset='UTF-8'>
+    <style>
+        body { margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f3f4f6; }
+        .wrapper { width: 100%; background-color: #f3f4f6; padding: 40px 0; }
+        .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 24px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.05); }
+        .header { background: linear-gradient(135deg, #0c46e6 0%, #00d2ff 100%); padding: 50px 40px; text-align: center; }
+        .header img { height: 45px; }
+        .body { padding: 40px; color: #1f2937; }
+        .headline { font-size: 24px; font-weight: 800; color: #111827; margin-bottom: 8px; }
+        .subheadline { font-size: 16px; color: #6b7280; margin-bottom: 32px; }
+        .bento-card { background-color: #f9fafb; border: 1px solid #e5e7eb; border-radius: 20px; padding: 24px; margin-bottom: 16px; }
+        .label { font-size: 10px; font-weight: 800; color: #0c46e6; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+        .value { font-size: 18px; font-weight: 700; color: #111827; word-break: break-all; }
+        .footer { background-color: #f9fafb; padding: 32px; text-align: center; border-top: 1px solid #f3f4f6; }
+        .footer p { font-size: 12px; color: #9ca3af; margin: 0; }
+        .cta-button { display: inline-block; background-color: #0c46e6; color: #ffffff !important; padding: 18px 36px; border-radius: 100px; font-weight: 700; text-decoration: none; margin-top: 24px; box-shadow: 0 10px 20px rgba(12, 70, 230, 0.2); }
+    </style>
     </head>
     <body>
         <div class='wrapper'>
@@ -138,8 +140,18 @@ try {
                     </div>
                     
                     <div class='bento-card'>
+                        <div class='label'>Escola</div>
+                        <div class='value'>$school</div>
+                    </div>
+
+                    <div class='bento-card'>
                         <div class='label'>WhatsApp / Contato</div>
                         <div class='value'>$phone</div>
+                    </div>
+
+                    <div class='bento-card'>
+                        <div class='label'>E-mail</div>
+                        <div class='value'>$email</div>
                     </div>
 
                     <div class='bento-card' style='background-color: #eff6ff; border-color: #dbeafe;'>
@@ -166,7 +178,7 @@ try {
     ";
 
     $mail->Body = $mailContent;
-    $mail->AltBody = "Novo Lead: $nome | Fone: $phone | Desafio: $desafio | Escola: $tamanho_escola";
+    $mail->AltBody = "Novo Lead: $school ($nome) | Fone: $phone | Email: $email | Desafio: $desafio | Escola: $tamanho_escola";
 
     $mail->send();
 

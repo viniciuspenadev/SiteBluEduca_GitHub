@@ -480,7 +480,7 @@ $canonical = "https://blueduca.com.br" . ($_SERVER['REQUEST_URI'] == '/' ? '' : 
     <!-- Fixed Top Navbar with Glassmorphism -->
     <nav class="fixed z-50 w-full top-0 px-4 pt-4 md:pt-6" x-data="{ mobileMenuOpen: false }">
         <div
-            class="max-w-5xl mx-auto bg-white/70 backdrop-blur-xl border border-white/40 rounded-3xl md:rounded-full px-6 py-3 flex items-center justify-between shadow-2xl shadow-black/5 ring-1 ring-black/5">
+            class="max-w-3xl mx-auto bg-white/70 backdrop-blur-xl border border-white/40 rounded-3xl md:rounded-full px-6 py-3 flex items-center justify-between shadow-2xl shadow-black/5 ring-1 ring-black/5">
 
             <!-- Logo -->
             <a href="#" class="flex items-center gap-2 group relative z-[60]">
@@ -1972,169 +1972,227 @@ $canonical = "https://blueduca.com.br" . ($_SERVER['REQUEST_URI'] == '/' ? '' : 
                     </div>
 
                     <div
-                        class="bg-white rounded-[2rem] md:rounded-[2.5rem] shadow-2xl p-6 md:p-14 relative min-h-[450px] md:min-h-[520px] flex items-center justify-center text-center overflow-hidden">
+                        class="bg-white rounded-[2rem] md:rounded-[2.5rem] shadow-2xl p-6 md:p-14 relative min-h-[450px] md:min-h-[520px] flex items-center justify-center text-center overflow-hidden transition-[height,min-height] duration-500 ease-in-out">
 
                         <!-- Step 1: Intro / Challenge -->
                         <div id="step-1"
                             class="w-full transition-all duration-500 transform translate-x-0 opacity-100 absolute inset-0 p-8 md:p-12 flex flex-col justify-center">
-                            <span
-                                class="text-[#0c46e6] font-bold tracking-wider uppercase text-[10px] md:text-xs mb-3 md:mb-4">Passo
-                                1 de
-                                3</span>
-                            <h3 class="text-xl md:text-3xl font-extrabold text-slate-900 mb-6 md:mb-8 leading-tight">
-                                Qual o maior desafio
-                                da sua
-                                gestão hoje?</h3>
-                            <div class="flex flex-col gap-4">
-                                <button onclick="nextStep(2, 'Inadimplência')"
-                                    class="w-full py-3 md:py-4 px-4 md:px-6 rounded-xl md:rounded-2xl border-2 border-slate-100 hover:border-[#0c46e6] hover:bg-white hover:shadow-xl text-slate-600 hover:text-[#0c46e6] font-bold text-sm md:text-lg transition-all text-left flex items-center justify-between group quiz-option">
-                                    <div class="flex items-center gap-3 md:gap-4">
-                                        <div
-                                            class="w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-slate-50 flex items-center justify-center group-hover:bg-blue-50 text-slate-400 group-hover:text-[#0c46e6] transition-all quiz-icon">
-                                            <i data-lucide="banknote" class="w-5 h-5 md:w-6 md:h-6"></i>
+                            <div class="step-wrapper w-full">
+                                <span
+                                    class="text-[#0c46e6] font-bold tracking-wider uppercase text-[10px] md:text-xs mb-3 md:mb-4">Passo
+                                    1 de
+                                    3</span>
+                                <h3
+                                    class="text-xl md:text-3xl font-extrabold text-slate-900 mb-6 md:mb-8 leading-tight">
+                                    Qual o maior desafio
+                                    da sua
+                                    gestão hoje?</h3>
+                                <div class="flex flex-col gap-4">
+                                    <button onclick="nextStep(2, 'Inadimplência')"
+                                        class="w-full py-3 md:py-4 px-4 md:px-6 rounded-xl md:rounded-2xl border-2 border-slate-100 hover:border-[#0c46e6] hover:bg-white hover:shadow-xl text-slate-600 hover:text-[#0c46e6] font-bold text-sm md:text-lg transition-all text-left flex items-center justify-between group quiz-option">
+                                        <div class="flex items-center gap-3 md:gap-4">
+                                            <div
+                                                class="w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-slate-50 flex items-center justify-center group-hover:bg-blue-50 text-slate-400 group-hover:text-[#0c46e6] transition-all quiz-icon">
+                                                <i data-lucide="banknote" class="w-5 h-5 md:w-6 md:h-6"></i>
+                                            </div>
+                                            <span>Inadimplência Alta</span>
                                         </div>
-                                        <span>Inadimplência Alta</span>
-                                    </div>
-                                    <i data-lucide="chevron-right"
-                                        class="w-4 h-4 md:w-5 md:h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
-                                </button>
-                                <button onclick="nextStep(2, 'Comunicação')"
-                                    class="w-full py-3 md:py-4 px-4 md:px-6 rounded-xl md:rounded-2xl border-2 border-slate-100 hover:border-[#0c46e6] hover:bg-white hover:shadow-xl text-slate-600 hover:text-[#0c46e6] font-bold text-sm md:text-lg transition-all text-left flex items-center justify-between group quiz-option">
-                                    <div class="flex items-center gap-3 md:gap-4">
-                                        <div
-                                            class="w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-slate-50 flex items-center justify-center group-hover:bg-blue-50 text-slate-400 group-hover:text-[#0c46e6] transition-all quiz-icon">
-                                            <i data-lucide="message-square" class="w-5 h-5 md:w-6 md:h-6"></i>
+                                        <i data-lucide="chevron-right"
+                                            class="w-4 h-4 md:w-5 md:h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+                                    </button>
+                                    <button onclick="nextStep(2, 'Comunicação')"
+                                        class="w-full py-3 md:py-4 px-4 md:px-6 rounded-xl md:rounded-2xl border-2 border-slate-100 hover:border-[#0c46e6] hover:bg-white hover:shadow-xl text-slate-600 hover:text-[#0c46e6] font-bold text-sm md:text-lg transition-all text-left flex items-center justify-between group quiz-option">
+                                        <div class="flex items-center gap-3 md:gap-4">
+                                            <div
+                                                class="w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-slate-50 flex items-center justify-center group-hover:bg-blue-50 text-slate-400 group-hover:text-[#0c46e6] transition-all quiz-icon">
+                                                <i data-lucide="message-square" class="w-5 h-5 md:w-6 md:h-6"></i>
+                                            </div>
+                                            <span>Comunicação com Pais</span>
                                         </div>
-                                        <span>Comunicação com Pais</span>
-                                    </div>
-                                    <i data-lucide="chevron-right"
-                                        class="w-4 h-4 md:w-5 md:h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
-                                </button>
-                                <button onclick="nextStep(2, 'Burocracia')"
-                                    class="w-full py-3 md:py-4 px-4 md:px-6 rounded-xl md:rounded-2xl border-2 border-slate-100 hover:border-[#0c46e6] hover:bg-white hover:shadow-xl text-slate-600 hover:text-[#0c46e6] font-bold text-sm md:text-lg transition-all text-left flex items-center justify-between group quiz-option">
-                                    <div class="flex items-center gap-3 md:gap-4">
-                                        <div
-                                            class="w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-slate-50 flex items-center justify-center group-hover:bg-blue-50 text-slate-400 group-hover:text-[#0c46e6] transition-all quiz-icon">
-                                            <i data-lucide="briefcase" class="w-5 h-5 md:w-6 md:h-6"></i>
+                                        <i data-lucide="chevron-right"
+                                            class="w-4 h-4 md:w-5 md:h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+                                    </button>
+                                    <button onclick="nextStep(2, 'Burocracia')"
+                                        class="w-full py-3 md:py-4 px-4 md:px-6 rounded-xl md:rounded-2xl border-2 border-slate-100 hover:border-[#0c46e6] hover:bg-white hover:shadow-xl text-slate-600 hover:text-[#0c46e6] font-bold text-sm md:text-lg transition-all text-left flex items-center justify-between group quiz-option">
+                                        <div class="flex items-center gap-3 md:gap-4">
+                                            <div
+                                                class="w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-slate-50 flex items-center justify-center group-hover:bg-blue-50 text-slate-400 group-hover:text-[#0c46e6] transition-all quiz-icon">
+                                                <i data-lucide="briefcase" class="w-5 h-5 md:w-6 md:h-6"></i>
+                                            </div>
+                                            <span>Burocracia Pedagógica</span>
                                         </div>
-                                        <span>Burocracia Pedagógica</span>
-                                    </div>
-                                    <i data-lucide="chevron-right"
-                                        class="w-4 h-4 md:w-5 md:h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
-                                </button>
+                                        <i data-lucide="chevron-right"
+                                            class="w-4 h-4 md:w-5 md:h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
                         <!-- Step 2: Size -->
                         <div id="step-2"
                             class="w-full transition-all duration-500 transform translate-x-full opacity-0 pointer-events-none absolute inset-0 p-8 md:p-12 flex flex-col justify-center">
-                            <button onclick="prevStep(1)"
-                                class="absolute top-6 left-6 md:top-8 md:left-8 text-slate-400 hover:text-slate-600 transition-colors"><i
-                                    data-lucide="arrow-left" class="w-5 h-5 md:w-6 md:h-6"></i></button>
+                            <div class="step-wrapper w-full">
+                                <button onclick="prevStep(1)"
+                                    class="absolute top-6 left-6 md:top-8 md:left-8 text-slate-400 hover:text-slate-600 transition-colors"><i
+                                        data-lucide="arrow-left" class="w-5 h-5 md:w-6 md:h-6"></i></button>
 
-                            <span
-                                class="text-[#0c46e6] font-bold tracking-wider uppercase text-[10px] md:text-xs mb-3 md:mb-4">Passo
-                                2 de
-                                3</span>
-                            <h3 class="text-xl md:text-3xl font-extrabold text-slate-900 mb-6 md:mb-8 leading-tight">
-                                Quantos alunos a
-                                escola
-                                possui?</h3>
-                            <div class="grid grid-cols-2 gap-3 md:gap-4">
-                                <button onclick="nextStep(3, '0-100')"
-                                    class="py-4 md:py-6 px-3 md:px-4 rounded-xl md:rounded-2xl border-2 border-slate-100 hover:border-[#0c46e6] hover:bg-white hover:shadow-lg text-slate-500 hover:text-[#0c46e6] font-bold text-sm md:text-lg transition-all flex flex-col items-center gap-1 md:gap-2 group">
-                                    <span
-                                        class="text-xl md:text-2xl group-hover:scale-110 transition-transform">🐣</span>
-                                    0 - 100
-                                </button>
-                                <button onclick="nextStep(3, '100-300')"
-                                    class="py-4 md:py-6 px-3 md:px-4 rounded-xl md:rounded-2xl border-2 border-slate-100 hover:border-[#0c46e6] hover:bg-white hover:shadow-lg text-slate-500 hover:text-[#0c46e6] font-bold text-sm md:text-lg transition-all flex flex-col items-center gap-1 md:gap-2 group">
-                                    <span
-                                        class="text-xl md:text-2xl group-hover:scale-110 transition-transform">🚀</span>
-                                    100 - 300
-                                </button>
-                                <button onclick="nextStep(3, '300-500')"
-                                    class="py-4 md:py-6 px-3 md:px-4 rounded-xl md:rounded-2xl border-2 border-slate-100 hover:border-[#0c46e6] hover:bg-white hover:shadow-lg text-slate-500 hover:text-[#0c46e6] font-bold text-sm md:text-lg transition-all flex flex-col items-center gap-1 md:gap-2 group">
-                                    <span
-                                        class="text-xl md:text-2xl group-hover:scale-110 transition-transform">🏰</span>
-                                    300 - 500
-                                </button>
-                                <button onclick="nextStep(3, '500+')"
-                                    class="py-4 md:py-6 px-3 md:px-4 rounded-xl md:rounded-2xl border-2 border-slate-100 hover:border-[#0c46e6] hover:bg-white hover:shadow-lg text-slate-500 hover:text-[#0c46e6] font-bold text-sm md:text-lg transition-all flex flex-col items-center gap-1 md:gap-2 group">
-                                    <span
-                                        class="text-xl md:text-2xl group-hover:scale-110 transition-transform">🌍</span>
-                                    500+
-                                </button>
+                                <span
+                                    class="text-[#0c46e6] font-bold tracking-wider uppercase text-[10px] md:text-xs mb-3 md:mb-4">Passo
+                                    2 de
+                                    3</span>
+                                <h3
+                                    class="text-xl md:text-3xl font-extrabold text-slate-900 mb-6 md:mb-8 leading-tight">
+                                    Quantos alunos a
+                                    escola
+                                    possui?</h3>
+                                <div class="grid grid-cols-2 gap-3 md:gap-4">
+                                    <button onclick="nextStep(3, '0-100')"
+                                        class="py-4 md:py-6 px-3 md:px-4 rounded-xl md:rounded-2xl border-2 border-slate-100 hover:border-[#0c46e6] hover:bg-white hover:shadow-lg text-slate-500 hover:text-[#0c46e6] font-bold text-sm md:text-lg transition-all flex flex-col items-center gap-1 md:gap-2 group">
+                                        <span
+                                            class="text-xl md:text-2xl group-hover:scale-110 transition-transform">🐣</span>
+                                        0 - 100
+                                    </button>
+                                    <button onclick="nextStep(3, '100-300')"
+                                        class="py-4 md:py-6 px-3 md:px-4 rounded-xl md:rounded-2xl border-2 border-slate-100 hover:border-[#0c46e6] hover:bg-white hover:shadow-lg text-slate-500 hover:text-[#0c46e6] font-bold text-sm md:text-lg transition-all flex flex-col items-center gap-1 md:gap-2 group">
+                                        <span
+                                            class="text-xl md:text-2xl group-hover:scale-110 transition-transform">🚀</span>
+                                        100 - 300
+                                    </button>
+                                    <button onclick="nextStep(3, '300-500')"
+                                        class="py-4 md:py-6 px-3 md:px-4 rounded-xl md:rounded-2xl border-2 border-slate-100 hover:border-[#0c46e6] hover:bg-white hover:shadow-lg text-slate-500 hover:text-[#0c46e6] font-bold text-sm md:text-lg transition-all flex flex-col items-center gap-1 md:gap-2 group">
+                                        <span
+                                            class="text-xl md:text-2xl group-hover:scale-110 transition-transform">🏰</span>
+                                        300 - 500
+                                    </button>
+                                    <button onclick="nextStep(3, '500+')"
+                                        class="py-4 md:py-6 px-3 md:px-4 rounded-xl md:rounded-2xl border-2 border-slate-100 hover:border-[#0c46e6] hover:bg-white hover:shadow-lg text-slate-500 hover:text-[#0c46e6] font-bold text-sm md:text-lg transition-all flex flex-col items-center gap-1 md:gap-2 group">
+                                        <span
+                                            class="text-xl md:text-2xl group-hover:scale-110 transition-transform">🌍</span>
+                                        500+
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
                         <div id="step-3"
-                            class="w-full transition-all duration-500 transform translate-x-full opacity-0 pointer-events-none absolute inset-0 p-8 md:p-12 flex flex-col justify-center">
-                            <button onclick="prevStep(2)"
-                                class="absolute top-6 left-6 md:top-8 md:left-8 text-slate-400 hover:text-slate-600 transition-colors"><i
-                                    data-lucide="arrow-left" class="w-5 h-5 md:w-6 md:h-6"></i></button>
+                            class="w-full transition-all duration-500 transform translate-x-full opacity-0 pointer-events-none absolute inset-0 p-8 md:p-12 flex flex-col justify-start md:justify-center">
+                            <div class="step-wrapper w-full">
+                                <button onclick="prevStep(2)"
+                                    class="absolute top-6 left-6 md:top-8 md:left-8 text-slate-400 hover:text-slate-600 transition-colors"><i
+                                        data-lucide="arrow-left" class="w-5 h-5 md:w-6 md:h-6"></i></button>
 
-                            <span
-                                class="text-[#0c46e6] font-bold tracking-wider uppercase text-[10px] md:text-xs mb-3 md:mb-4">Passo
-                                Final</span>
-                            <h3 class="text-xl md:text-3xl font-extrabold text-slate-900 mb-4 md:mb-6 leading-tight">
-                                Vamos revolucionar sua
-                                escola.
-                            </h3>
-                            <p class="text-xs md:text-base text-slate-500 mb-6 md:mb-8 text-center">Deixe seu contato
-                                para agendarmos uma demo exclusiva.</p>
+                                <span
+                                    class="text-[#0c46e6] font-bold tracking-wider uppercase text-[10px] md:text-xs mb-3 md:mb-4">Passo
+                                    Final</span>
+                                <h3
+                                    class="text-xl md:text-3xl font-extrabold text-slate-900 mb-4 md:mb-6 leading-tight">
+                                    Vamos revolucionar sua
+                                    escola.
+                                </h3>
+                                <p class="text-xs md:text-base text-slate-500 mb-6 md:mb-8 text-center">Deixe seu
+                                    contato
+                                    para agendarmos uma demo exclusiva.</p>
 
-                            <form onsubmit="submitQuiz(event)" class="flex flex-col gap-5 text-left">
-                                <div class="relative group/input">
-                                    <label
-                                        class="block text-[10px] font-bold text-[#0c46e6] uppercase mb-1.5 ml-1 tracking-widest">Seu
-                                        Nome</label>
-                                    <div class="relative">
-                                        <i data-lucide="user"
-                                            class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-slate-400 group-focus-within/input:text-[#0c46e6] transition-colors"></i>
-                                        <input type="text" required
-                                            class="w-full bg-slate-50 border-2 border-slate-100 rounded-xl md:rounded-2xl pl-10 md:pl-12 pr-4 py-3 md:py-4 focus:outline-none focus:border-[#0c46e6] focus:bg-white focus:shadow-lg transition-all text-sm md:text-base text-slate-800 font-medium placeholder:text-slate-300"
-                                            placeholder="Ex: Ana Silva">
+                                <form onsubmit="submitQuiz(event)" class="flex flex-col gap-4 text-left">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="relative group/input">
+                                            <label
+                                                class="block text-[10px] font-bold text-[#0c46e6] uppercase mb-1.5 ml-1 tracking-widest">Seu
+                                                Nome</label>
+                                            <div class="relative">
+                                                <i data-lucide="user"
+                                                    class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-slate-400 group-focus-within/input:text-[#0c46e6] transition-colors"></i>
+                                                <input type="text" name="nome" required
+                                                    class="w-full bg-slate-50 border-2 border-slate-100 rounded-xl md:rounded-2xl pl-10 md:pl-12 pr-4 py-3 md:py-3.5 focus:outline-none focus:border-[#0c46e6] focus:bg-white focus:shadow-lg transition-all text-sm md:text-base text-slate-800 font-medium placeholder:text-slate-300"
+                                                    placeholder="Ex: Ana Silva">
+                                            </div>
+                                        </div>
+                                        <div class="relative group/input">
+                                            <label
+                                                class="block text-[9px] md:text-[10px] font-bold text-[#0c46e6] uppercase mb-1 md:mb-1.5 ml-1 tracking-widest">WhatsApp
+                                                / Celular</label>
+                                            <div class="relative">
+                                                <i data-lucide="phone"
+                                                    class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-slate-400 group-focus-within/input:text-[#0c46e6] transition-colors"></i>
+                                                <input type="tel" name="phone" required
+                                                    class="w-full bg-slate-50 border-2 border-slate-100 rounded-xl md:rounded-2xl pl-10 md:pl-12 pr-4 py-3 md:py-3.5 focus:outline-none focus:border-[#0c46e6] focus:bg-white focus:shadow-lg transition-all text-sm md:text-base text-slate-800 font-medium placeholder:text-slate-300"
+                                                    placeholder="(11) 99999-9999">
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="relative group/input">
-                                    <label
-                                        class="block text-[9px] md:text-[10px] font-bold text-[#0c46e6] uppercase mb-1 md:mb-1.5 ml-1 tracking-widest">WhatsApp
-                                        / Celular</label>
-                                    <div class="relative">
-                                        <i data-lucide="phone"
-                                            class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-slate-400 group-focus-within/input:text-[#0c46e6] transition-colors"></i>
-                                        <input type="tel" required
-                                            class="w-full bg-slate-50 border-2 border-slate-100 rounded-xl md:rounded-2xl pl-10 md:pl-12 pr-4 py-3 md:py-4 focus:outline-none focus:border-[#0c46e6] focus:bg-white focus:shadow-lg transition-all text-sm md:text-base text-slate-800 font-medium placeholder:text-slate-300"
-                                            placeholder="(11) 99999-9999">
+
+                                    <div class="relative group/input">
+                                        <label
+                                            class="block text-[10px] font-bold text-[#0c46e6] uppercase mb-1.5 ml-1 tracking-widest">Seu
+                                            E-mail</label>
+                                        <div class="relative">
+                                            <i data-lucide="mail"
+                                                class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-slate-400 group-focus-within/input:text-[#0c46e6] transition-colors"></i>
+                                            <input type="email" name="email" required
+                                                class="w-full bg-slate-50 border-2 border-slate-100 rounded-xl md:rounded-2xl pl-10 md:pl-12 pr-4 py-3 md:py-3.5 focus:outline-none focus:border-[#0c46e6] focus:bg-white focus:shadow-lg transition-all text-sm md:text-base text-slate-800 font-medium placeholder:text-slate-300"
+                                                placeholder="seu@email.com">
+                                        </div>
                                     </div>
-                                </div>
-                                <button type="submit"
-                                    class="w-full bg-gradient-to-r from-[#0c46e6] to-[#00d2ff] text-white font-extrabold py-4 md:py-5 rounded-xl md:rounded-2xl shadow-xl shadow-blue-500/30 hover:scale-[1.02] active:scale-[0.98] transition-all mt-2 md:mt-4 flex items-center justify-center gap-2 md:gap-3 group">
-                                    <span class="text-sm md:text-base">Agendar Minha Demo</span>
-                                    <i data-lucide="check"
-                                        class="w-5 h-5 md:w-6 md:h-6 group-hover:scale-110 transition-transform"></i>
-                                </button>
-                            </form>
+
+                                    <div class="relative group/input">
+                                        <label
+                                            class="block text-[10px] font-bold text-[#0c46e6] uppercase mb-1.5 ml-1 tracking-widest">Nome
+                                            da Escola</label>
+                                        <div class="relative">
+                                            <i data-lucide="graduation-cap"
+                                                class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-slate-400 group-focus-within/input:text-[#0c46e6] transition-colors"></i>
+                                            <input type="text" name="school" required
+                                                class="w-full bg-slate-50 border-2 border-slate-100 rounded-xl md:rounded-2xl pl-10 md:pl-12 pr-4 py-3 md:py-3.5 focus:outline-none focus:border-[#0c46e6] focus:bg-white focus:shadow-lg transition-all text-sm md:text-base text-slate-800 font-medium placeholder:text-slate-300"
+                                                placeholder="Ex: Colégio Futuro">
+                                        </div>
+                                    </div>
+
+                                    <div class="flex items-start gap-3 mt-1 group cursor-pointer relative">
+                                        <div class="relative flex items-center">
+                                            <input type="checkbox" name="terms" id="terms" required
+                                                class="peer h-5 w-5 cursor-pointer appearance-none rounded-md border-2 border-slate-200 shadow-sm transition-all checked:border-[#0c46e6] checked:bg-[#0c46e6] hover:border-[#0c46e6] focus:ring-2 focus:ring-[#0c46e6]/20">
+                                            <i data-lucide="check"
+                                                class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3.5 h-3.5 text-white opacity-0 peer-checked:opacity-100 pointer-events-none transition-opacity"></i>
+                                        </div>
+                                        <label for="terms"
+                                            class="text-xs text-slate-500 leading-snug cursor-pointer select-none">
+                                            Li e aceito os <a href="termos" target="_blank"
+                                                class="text-[#0c46e6] font-bold hover:underline">Termos de Uso</a> e a
+                                            <a href="privacidade" target="_blank"
+                                                class="text-[#0c46e6] font-bold hover:underline">Política de
+                                                Privacidade</a>. Entendo que meus dados serão usados para contato.
+                                        </label>
+                                    </div>
+
+                                    <button type="submit"
+                                        class="w-full bg-gradient-to-r from-[#0c46e6] to-[#00d2ff] text-white font-extrabold py-4 md:py-5 rounded-xl md:rounded-2xl shadow-xl shadow-blue-500/30 hover:scale-[1.02] active:scale-[0.98] transition-all mt-2 md:mt-4 flex items-center justify-center gap-2 md:gap-3 group disabled:opacity-50 disabled:cursor-not-allowed">
+                                        <span class="text-sm md:text-base">Agendar Minha Demo</span>
+                                        <i data-lucide="check"
+                                            class="w-5 h-5 md:w-6 md:h-6 group-hover:scale-110 transition-transform"></i>
+                                    </button>
+                                </form>
+                            </div>
                         </div>
 
                         <!-- Step 4: Success -->
                         <div id="step-success"
                             class="w-full transition-all duration-500 transform translate-x-full opacity-0 pointer-events-none absolute inset-0 p-12 flex flex-col justify-center items-center text-center">
-                            <div class="relative">
-                                <div class="absolute inset-0 bg-green-400 blur-2xl opacity-20 animate-pulse"></div>
-                                <div
-                                    class="relative w-24 h-24 bg-gradient-to-br from-green-400 to-emerald-600 rounded-3xl flex items-center justify-center text-white mb-8 shadow-xl shadow-green-500/20 rotate-12 hover:rotate-0 transition-transform duration-500">
-                                    <i data-lucide="party-popper" class="w-12 h-12"></i>
+                            <div class="step-wrapper w-full items-center flex flex-col">
+                                <div class="relative">
+                                    <div class="absolute inset-0 bg-green-400 blur-2xl opacity-20 animate-pulse"></div>
+                                    <div
+                                        class="relative w-24 h-24 bg-gradient-to-br from-green-400 to-emerald-600 rounded-3xl flex items-center justify-center text-white mb-8 shadow-xl shadow-green-500/20 rotate-12 hover:rotate-0 transition-transform duration-500">
+                                        <i data-lucide="party-popper" class="w-12 h-12"></i>
+                                    </div>
                                 </div>
+                                <h3 class="text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">Quase lá! 🚀</h3>
+                                <p class="text-slate-500 text-lg mb-8 leading-relaxed max-w-sm">Nossa equipe já foi
+                                    notificada e
+                                    vamos te chamar em instantes para transformar sua escola.</p>
+                                <button onclick="resetQuiz()"
+                                    class="px-8 py-3 bg-slate-100 text-slate-600 rounded-full font-bold text-sm hover:bg-slate-200 transition-all">Voltar
+                                    ao início</button>
                             </div>
-                            <h3 class="text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">Quase lá! 🚀</h3>
-                            <p class="text-slate-500 text-lg mb-8 leading-relaxed max-w-sm">Nossa equipe já foi
-                                notificada e
-                                vamos te chamar em instantes para transformar sua escola.</p>
-                            <button onclick="resetQuiz()"
-                                class="px-8 py-3 bg-slate-100 text-slate-600 rounded-full font-bold text-sm hover:bg-slate-200 transition-all">Voltar
-                                ao início</button>
                         </div>
 
                     </div>
@@ -2739,6 +2797,22 @@ $canonical = "https://blueduca.com.br" . ($_SERVER['REQUEST_URI'] == '/' ? '' : 
         // --- Lead Capture Quiz Logic ---
         const quizData = {};
 
+        // Helper to update container height dynamically
+        function updateHeight(stepId) {
+            const stepEl = document.getElementById(stepId);
+            const container = stepEl ? stepEl.closest('.relative') : null;
+            const content = stepEl ? stepEl.querySelector('.step-wrapper') : null;
+
+            if (stepEl && container && content) {
+                // Get the height of the content wrapper
+                // This avoids value accumulation from the parent container's current height
+                const height = content.offsetHeight;
+
+                // Add buffer (e.g., 60px) to ensure no cut-off due to padding/margins
+                container.style.minHeight = `${height + 60}px`;
+            }
+        }
+
         function nextStep(targetStep, value) {
             if (value) quizData[`q${targetStep - 1}`] = value;
 
@@ -2755,10 +2829,13 @@ $canonical = "https://blueduca.com.br" . ($_SERVER['REQUEST_URI'] == '/' ? '' : 
             nextEl.classList.remove('translate-x-full', 'opacity-0', 'pointer-events-none');
             nextEl.classList.add('translate-x-0', 'opacity-100');
 
-            // Update Progress
+            // Update Progress Bar
             const progress = document.getElementById('quiz-progress');
             if (targetStep === 2) progress.style.width = '50%';
-            if (targetStep === 3) progress.style.width = '85%';
+            if (targetStep === 3) progress.style.width = '90%';
+
+            // Update Container Height with delay to allow display transition if needed
+            setTimeout(() => updateHeight(nextId), 50);
         }
 
         function prevStep(targetStep) {
@@ -2775,62 +2852,74 @@ $canonical = "https://blueduca.com.br" . ($_SERVER['REQUEST_URI'] == '/' ? '' : 
             prevEl.classList.remove('-translate-x-full', 'opacity-0', 'pointer-events-none');
             prevEl.classList.add('translate-x-0', 'opacity-100');
 
-            // Update Progress
+            // Update Progress Bar
             const progress = document.getElementById('quiz-progress');
             if (targetStep === 1) progress.style.width = '10%';
             if (targetStep === 2) progress.style.width = '50%';
+
+            // Update Container Height
+            updateHeight(prevId);
         }
 
-        function submitQuiz(e) {
+        async function submitQuiz(e) {
             e.preventDefault();
+
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            const originalContent = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i> Enviando...';
+            submitBtn.disabled = true;
+            lucide.createIcons(); // Re-render lucide icons for the spinner
 
             // Collect Form Data
             const formData = {
                 ...quizData,
-                nome: e.target.querySelector('input[type="text"]').value,
-                phone: e.target.querySelector('input[type="tel"]').value
+                nome: e.target.querySelector('input[name="nome"]').value,
+                phone: e.target.querySelector('input[name="phone"]').value,
+                email: e.target.querySelector('input[name="email"]').value,
+                school: e.target.querySelector('input[name="school"]').value
             };
 
             // UI feedback
-            const btn = e.target.querySelector('button');
-            const originalText = btn.innerHTML;
-            btn.disabled = true;
-            btn.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i> Enviando...';
-            lucide.createIcons();
+            await new Promise(r => setTimeout(r, 1500)); // Fake nice delay
 
-            fetch('process_quiz', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        // Success State
-                        const currentEl = document.getElementById('step-3');
-                        const nextEl = document.getElementById('step-success');
-                        const progress = document.getElementById('quiz-progress');
-
-                        currentEl.classList.add('-translate-x-full', 'opacity-0', 'pointer-events-none');
-                        nextEl.classList.remove('translate-x-full', 'opacity-0', 'pointer-events-none');
-
-                        progress.style.width = '100%';
-                        progress.classList.remove('from-[#0c46e6]', 'to-[#00d2ff]');
-                        progress.classList.add('from-green-400', 'to-emerald-600');
-                    } else {
-                        alert(data.message || 'Erro ao enviar. Tente novamente.');
-                        btn.disabled = false;
-                        btn.innerHTML = originalText;
-                        lucide.createIcons();
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Erro na conexão com o servidor.');
-                    btn.disabled = false;
-                    btn.innerHTML = originalText;
-                    lucide.createIcons();
+            // Send to Backend
+            try {
+                const response = await fetch('process_quiz', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
                 });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    // Success Step
+                    const currentId = 'step-3';
+                    const successId = 'step-success';
+                    const currentEl = document.getElementById(currentId);
+                    const successEl = document.getElementById(successId);
+
+                    currentEl.classList.add('-translate-x-full', 'opacity-0', 'pointer-events-none');
+                    successEl.classList.remove('translate-x-full', 'opacity-0', 'pointer-events-none');
+
+                    const progress = document.getElementById('quiz-progress');
+                    progress.style.width = '100%';
+                    progress.classList.remove('from-[#0c46e6]', 'to-[#00d2ff]');
+                    progress.classList.add('from-green-400', 'to-emerald-600');
+                    updateHeight(successId);
+                } else {
+                    alert(result.message || 'Erro ao enviar. Tente novamente.');
+                    submitBtn.innerHTML = originalContent;
+                    submitBtn.disabled = false;
+                    lucide.createIcons();
+                }
+            } catch (error) {
+                console.error('Erro:', error);
+                alert('Erro de conexão. Verifique sua internet.');
+                submitBtn.innerHTML = originalContent;
+                submitBtn.disabled = false;
+                lucide.createIcons();
+            }
         }
 
         function resetQuiz() {

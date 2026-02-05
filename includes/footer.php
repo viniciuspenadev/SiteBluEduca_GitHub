@@ -81,7 +81,7 @@
                     <a href="mailto:contato@bluedigitalhub.com.br"
                         class="flex items-center gap-3 text-slate-400 hover:text-white group transition-all">
                         <div
-                            class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center group-hover:bg-[#0c46e6] transition-colors">
+                            class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center group-hover:bg-[#0c46e6] transition-colors shrink-0">
                             <i data-lucide="mail" class="w-4 h-4"></i>
                         </div>
                         <span class="text-sm font-medium">contato@bluedigitalhub.com.br</span>
@@ -89,13 +89,13 @@
                     <a href="tel:5511987253394"
                         class="flex items-center gap-3 text-slate-400 hover:text-white group transition-all">
                         <div
-                            class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center group-hover:bg-[#0c46e6] transition-colors">
+                            class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center group-hover:bg-[#0c46e6] transition-colors shrink-0">
                             <i data-lucide="phone" class="w-4 h-4"></i>
                         </div>
                         <span class="text-sm font-medium">(11) 98725-3394</span>
                     </a>
                     <div class="flex items-center gap-3 text-slate-400">
-                        <div class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center">
+                        <div class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center shrink-0">
                             <i data-lucide="map-pin" class="w-4 h-4"></i>
                         </div>
                         <span class="text-sm font-medium">São Paulo, SP - Brasil</span>
